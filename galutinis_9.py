@@ -36,17 +36,17 @@ grenade_thrown = False
 #tile sudet i lista
 img_list = []
 for x in range(TILE_TYPES):
-    img = pygame.image.load(f'2dzaidimas_9/fonas2/{x}.png')
+    img = pygame.image.load(f'img/fonas2/{x}.png')
     img = pygame.transform.scale(img, (TILE_SIZE, TILE_SIZE))
     img_list.append(img)
 #bullet
-bullet_img = pygame.image.load('2dzaidimas_9/bullet/bullet.png').convert_alpha()
+bullet_img = pygame.image.load('img/bullet/bullet.png').convert_alpha()
 #grenade
-grenade_img = pygame.image.load('2dzaidimas_9/grenade/grenade.png').convert_alpha()
+grenade_img = pygame.image.load('img/grenade/grenade.png').convert_alpha()
 #pick up boxes
-health_box_img = pygame.image.load('2dzaidimas_9/collect/health/healthbox.png').convert_alpha()
-ammo_box_img = pygame.image.load('2dzaidimas_9/collect/ammo/ammo.png').convert_alpha()
-grenade_box_img = pygame.image.load('2dzaidimas_9/collect/grenade/grenade.png').convert_alpha()
+health_box_img = pygame.image.load('img/collect/health/healthbox.png').convert_alpha()
+ammo_box_img = pygame.image.load('img/collect/ammo/ammo.png').convert_alpha()
+grenade_box_img = pygame.image.load('img/collect/grenade/grenade.png').convert_alpha()
 item_boxes = {
     'Health'    : health_box_img,
     'Ammo'      : ammo_box_img,
@@ -107,9 +107,9 @@ class Soldier(pygame.sprite.Sprite):
             #reset temporary list of images
             temp_list = []
             #count number of files in the folder
-            num_of_frames = len(os.listdir(f'2dzaidimas_9/{self.char_type}/{animation}'))
+            num_of_frames = len(os.listdir(f'img/{self.char_type}/{animation}'))
             for i in range(num_of_frames):
-                img = pygame.image.load(f'2dzaidimas_9/{self.char_type}/{animation}/{i}.png').convert_alpha()
+                img = pygame.image.load(f'img/{self.char_type}/{animation}/{i}.png').convert_alpha()
                 img = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
                 temp_list.append(img)
             self.animation_list.append(temp_list)
@@ -416,7 +416,7 @@ class Explosion(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.images = []
         for num in range(1, 5):
-            img = pygame.image.load(f'2dzaidimas_9/grenade/explosion/{num}.png').convert_alpha()
+            img = pygame.image.load(f'img/grenade/explosion/{num}.png').convert_alpha()
             img = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
             self.images.append(img)
         self.frame_index = 0
@@ -461,7 +461,7 @@ for row in range (ROWS):
     r = [-1] * COLS
     world_data.append(r)
 #load leveliu info ir sukurti zemelapi
-with open(f'2dzaidimas_9/level{level}_data.csv', newline='') as csvfile:
+with open(f'level{level}_data.csv', newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
     for x, row in enumerate(reader):
         for y, tile in enumerate(row):
