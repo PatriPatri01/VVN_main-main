@@ -2,6 +2,7 @@ import pygame
 import button
 import csv
 
+
 pygame.init()
 
 
@@ -28,16 +29,16 @@ scroll_speed = 1
 
 
 #load images
-klase_img = pygame.image.load('FONAS/fonas/klase.jpg').convert_alpha()
+klase_img = pygame.image.load('img/fonas/klase.jpg').convert_alpha()
 #ikelti kbadratus i sarasa
 img_list = []
 for x in range (TILE_TYPES):
-	img = pygame.image.load(f'FONAS/fonas2/{x}.png')
+	img = pygame.image.load(f'img/fonas2/{x}.png')
 	img = pygame.transform.scale(img, (TILE_SIZE, TILE_SIZE))
 	img_list.append(img)
 
-save_img = pygame.image.load('FONAS/save_btn.png').convert_alpha()
-load_img = pygame.image.load('FONAS/load_btn.png').convert_alpha()
+save_img = pygame.image.load('img/save_btn.png').convert_alpha()
+load_img = pygame.image.load('img/load_btn.png').convert_alpha()
 
 #splavos
 GREEN = (144, 201, 120)
@@ -117,7 +118,7 @@ while run:
 	#save ir load data
 	if save_button.draw(screen):
 		#save level data
-		with open(f'FONAS/level{level}_data.csv', 'w', newline='') as csvfile:
+		with open(f'level{level}_data.csv', 'w', newline='') as csvfile:
 			writer = csv.writer(csvfile, delimiter = ',')
 			for eile in world_data:
 				writer.writerow(eile)
@@ -125,7 +126,7 @@ while run:
 		#ikelti leveli data
 		#resetinti scroll atgal i pradzia lygio
 		scroll = 0
-		with open(f'FONAS/level{level}_data.csv', newline='') as csvfile:
+		with open(f'level{level}_data.csv', newline='') as csvfile:
 			reader = csv.reader(csvfile, delimiter = ',')
 			for x, row in enumerate (reader):
 				for y, tile in enumerate(row):
