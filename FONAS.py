@@ -29,11 +29,11 @@ scroll_speed = 1
 
 
 #load images
-klase_img = pygame.image.load('img/fonas/klase.jpg').convert_alpha()
+klase_img = pygame.image.load('img/background/klase.jpg').convert_alpha()
 #ikelti kbadratus i sarasa
 img_list = []
 for x in range (TILE_TYPES):
-	img = pygame.image.load(f'img/fonas2/{x}.png')
+	img = pygame.image.load(f'img/Tile/{x}.png')
 	img = pygame.transform.scale(img, (TILE_SIZE, TILE_SIZE))
 	img_list.append(img)
 
